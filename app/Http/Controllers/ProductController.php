@@ -30,6 +30,7 @@ class ProductController extends Controller
         $products = Product::latest()->paginate(5);
         return view('products.index',compact('products'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
+
     }
     
     /**
@@ -39,7 +40,9 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('products.create');
+        $brands=Brand::select('name','id')->get();
+        $brand_id=2;
+        return view('products.create',compact('brands','brand_id'));
     }
     
     /**
@@ -58,14 +61,13 @@ class ProductController extends Controller
 
         ]);
     
-        $product=Product::create($request->all());
-        if($request->has('avatar')){
-            // dd($request->has('avatar'));
+        $input = $request->all();
+        $product = Product::create($input);
+        if($request->hasFile('avatar') && $request->file('avatar')->isValid()){
             $product->addMediaFromRequest('avatar')->toMediaCollection('avatar');
         }
-
-    
-        return redirect()->route('products.index')
+        
+       return redirect()->route('products.index')
                         ->with('success','Product created successfully.');
     }
     

@@ -20,6 +20,7 @@ class CreateProductsTable extends Migration
             $table->text('detail');
             $table->string('price', 100);
             $table->timestamps();
+            $table->foreignId('brand_id')->constrained();
         });
     }
 

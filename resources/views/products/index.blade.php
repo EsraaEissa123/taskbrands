@@ -30,6 +30,7 @@
             <th>Quantity</th>
             <th>Details</th>
             <th>Price</th>
+            <th>Brand</th>
             <th width="30%">Image</th>
             <th width="280px">Action</th>
         </tr>
@@ -40,8 +41,9 @@
 	        <td>{{ $product->quantity }}</td>
             <td>{{ $product->detail }}</td>
 	        <td>{{ $product->price}}</td>
+            <td>{{ $product->brand_id}}</td>
             <td><img src="{{$product->getFirstMediaUrl('avatar', 'thumb')}}" / width="120px"></td>
-
+            
 	        <td>
                 <form action="{{ route('products.destroy',$product->id) }}" method="POST">
                     <a class="btn btn-info" href="{{ route('products.show',$product->id) }}">Show</a>
