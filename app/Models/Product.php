@@ -15,6 +15,6 @@ class Product extends Model implements HasMedia
     use HasFactory, InteractsWithMedia;
     public function brands()
     {
-        return $this->belongsToMany('App\Models\Brand');
+        return $this->belongsTo(Brand::class);
     }
 }
