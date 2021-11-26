@@ -3,6 +3,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Brand;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 
@@ -75,8 +76,11 @@ class BrandController extends Controller
      */
     public function show(Brand $brand)
     {
+        // $products = Product::find(10)->brand()->get();
+           
+
         return view('brands.show',compact('brand'));
-        
+
     }
 
 

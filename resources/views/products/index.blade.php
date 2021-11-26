@@ -63,6 +63,7 @@
 	    @endforeach
     </table>
 
-
     {!! $products->links() !!}
+
+    
 
