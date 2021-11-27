@@ -7,6 +7,8 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\BrandController;
+use App\Http\Controllers\BranchController;
+
 
 
   
@@ -22,7 +24,7 @@ use App\Http\Controllers\BrandController;
 */
   
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
   
 Auth::routes();
@@ -34,5 +36,6 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('users', UserController::class);
     Route::resource('products', ProductController::class);
     Route::resource('brands', BrandController::class);
+    Route::resource('branches', BranchController::class);
 
 });

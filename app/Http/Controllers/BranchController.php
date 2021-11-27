@@ -1,35 +1,137 @@
 <?php
 
+
 namespace App\Http\Controllers;
-
-use Illuminate\Http\Request;
-use App\Models\Branch;
-use App\Models\Brand;
+use App\Models\branch;
 use App\Models\Product;
+use Illuminate\Http\Request;
 
-use Illuminate\Support\Facades\Auth;
 
-class BranchController extends Controller
-{
-    public function create()
+
+class branchController extends Controller
+{ 
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    function __construct()
     {
-        return view(
-            'branchs.create'
-        );
+         $this->middleware('permission:branch-list|branch-create|branch-edit|branch-delete', ['only' => ['index','show']]);
+         $this->middleware('permission:branch-create', ['only' => ['create','store']]);
+         $this->middleware('permission:branch-edit', ['only' => ['edit','update']]);
+         $this->middleware('permission:branch-delete', ['only' => ['destroy']]);
+    }
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        $branches = branch::latest()->paginate(5);
+        return view('branches.index',compact('branches'))
+            ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        return view('branches.create');
+    }
+
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function store(Request $request)
     {
-        // validation 
-        $request->validate([
-            'content' => 'required|string',
+        request()->validate([
+            'name' => 'required',
+            'detail' => 'required',
         ]);
 
-        Branch::create([
-            'content' => $request->content,
-            'product_id' =>Product::all()->id,
+
+        branch::create($request->all());
+
+
+        return redirect()->route('branches.index')
+                        ->with('success','branch created successfully.');
+    }
+
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\branch  $branch
+     * @return \Illuminate\Http\Response
+     */
+    public function show(branch $branch)
+    {
+           
+       $branches= branch::with(['products'])->first();
+       $products=Product::where('branch_id',$branches->id)->get();
+   
+       return view('branches.show',compact('branches','products'));
+
+    }
+
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\branch  $branch
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(branch $branch)
+    {
+        return view('branches.edit',compact('branch'));
+    }
+
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\branch  $branch
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, branch $branch)
+    {
+         request()->validate([
+            'name' => 'required',
+            'detail' => 'required',
         ]);
 
-        return redirect( route('books.index') );
+
+        $branch->update($request->all());
+
+
+        return redirect()->route('branches.index')
+                        ->with('success','branch updated successfully');
+    }
+
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\branch  $branch
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(branch $branch)
+    {
+        $branch->delete();
+
+
+        return redirect()->route('branches.index')
+                        ->with('success','branch deleted successfully');
     }
 }
