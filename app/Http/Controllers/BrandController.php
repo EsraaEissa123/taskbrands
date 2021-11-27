@@ -77,8 +77,10 @@ class BrandController extends Controller
     public function show(Brand $brand)
     {
            
-
-        return view('brands.show',compact('brand'));
+       $brands= Brand::with(['products'])->first();
+       $products=Product::where('brand_id',$brands->id)->get();
+   
+       return view('brands.show',compact('brands','products'));
 
     }
 

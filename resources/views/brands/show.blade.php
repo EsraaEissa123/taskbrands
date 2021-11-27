@@ -18,13 +18,13 @@
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Name:</strong>
-                {{ $brand->name }}
+                {{ $brands->name }}
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Details:</strong>
-                {{ $brand->detail }}
+                {{ $brands->detail }}
             </div>
         </div>
     </div>
@@ -51,27 +51,28 @@
 
     <table class="table table-bordered">
         <tr>
-            <th>No</th>
+            {{-- <th>No</th> --}}
             <th>Name</th>
             <th>Quantity</th>
             <th>Details</th>
             <th>Price</th>
-            <th>Brand</th>
+            {{-- <th>Brand</th> --}}
             <th width="30%">Image</th>
             <th width="280px">Action</th>
         </tr>
-	    @foreach ($brand->$products as $product)
+	    @foreach ($products as $product)
+     
+        
 	    <tr>
-	        <td>{{ ++$i }}</td>
-	        <td>{{ $product->name }}</td>
-	        <td>{{ $product->quantity }}</td>
+	        {{-- <td>{{ $product->name }}</td> --}}
+	    <td>{{ $product->quantity }}</td>
             <td>{{ $product->detail }}</td>
 	        <td>{{ $product->price}}</td>
             <td>{{ $product->brand_id}}</td>
             <td><img src="{{$product->getFirstMediaUrl('avatar', 'thumb')}}" / width="120px"></td>
             
 	        <td>
-                <form action="{{ route('products.destroy',$product->id) }}" method="POST">
+                <form action="{{ route('products.destroy',$product->id) }}" method="POST"> 
                     <a class="btn btn-info" href="{{ route('products.show',$product->id) }}">Show</a>
                     @can('product-edit')
                     <a class="btn btn-primary" href="{{ route('products.edit',$product->id) }}">Edit</a>
@@ -84,7 +85,7 @@
                     <button type="submit" class="btn btn-danger">Delete</button>
                     @endcan
                 </form>
-	        </td>
+	        </td> 
 	    </tr>
 	    @endforeach
     </table>
