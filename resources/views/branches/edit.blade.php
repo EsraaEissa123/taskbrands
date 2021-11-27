@@ -8,7 +8,7 @@
                 <h2>Edit Branch</h2>
             </div>
             <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('branchs.index') }}"> Back</a>
+                <a class="btn btn-primary" href="{{ route('branches.index') }}"> Back</a>
             </div>
         </div>
     </div>
@@ -26,7 +26,7 @@
     @endif
 
 
-    <form action="{{ route('branchs.update',$branch->id) }}" method="POST">
+    <form action="{{ route('branches.update',$branch->id) }}" method="POST">
     	@csrf
         @method('PUT')
 
@@ -38,12 +38,28 @@
 		            <input type="text" name="name" value="{{ $branch->name }}" class="form-control" placeholder="Name">
 		        </div>
 		    </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+		        <div class="form-group">
+		            <strong>Quantity:</strong>
+		            <input type="text" name="quantity" value="{{ $branch->quantity }}" class="form-control" placeholder="Quantity">
+		    </div>   
 		    <div class="col-xs-12 col-sm-12 col-md-12">
 		        <div class="form-group">
-		            <strong>Detail:</strong>
-		            <textarea class="form-control" style="height:150px" name="detail" placeholder="Detail">{{ $branch->detail }}</textarea>
+		            <strong>Details:</strong>
+		            <textarea class="form-control" style="height:150px" name="detail" value="{{ $branch->detail }}" placeholder="Detail"></textarea>
 		        </div>
 		    </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <strong>Price:</strong>
+                    <input type="text" name="price" value="{{ $branch->price }}" class="form-control" placeholder="Price">
+                </div>    
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <strong>Image:</strong>
+                    <input type="file" name="avatar" class="form-control" >
+                </div>  
 		    <div class="col-xs-12 col-sm-12 col-md-12 text-center">
 		      <button type="submit" class="btn btn-primary">Submit</button>
 		    </div>

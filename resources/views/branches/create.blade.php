@@ -8,7 +8,7 @@
                 <h2>Add New Branch</h2>
             </div>
             <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('branchs.index') }}"> Back</a>
+                <a class="btn btn-primary" href="{{ route('branches.index') }}"> Back</a>
             </div>
         </div>
     </div>
@@ -26,23 +26,48 @@
     @endif
 
 
-    <form action="{{ route('branchs.store') }}" method="POST">
+    <form action="{{ route('branches.store') }}" method="POST">
     	@csrf
 
 
          <div class="row">
 		    <div class="col-xs-12 col-sm-12 col-md-12">
 		        <div class="form-group">
-		            <strong>Name:</strong>
-		            <input type="text" name="name" class="form-control" placeholder="Name">
-		        </div>
+		            <strong>Branch Name:</strong>
+		            <input type="text" name="branch_name" class="form-control" placeholder="Name">
 		    </div>
-		    <div class="col-xs-12 col-sm-12 col-md-12">
+
+            <div class="col-xs-12 col-sm-12 col-md-12">
 		        <div class="form-group">
-		            <strong>Detail:</strong>
-		            <textarea class="form-control" style="height:150px" name="detail" placeholder="Detail"></textarea>
-		        </div>
+		            <strong>Governorate:</strong>
+		            <input type="text" name="region" class="form-control" placeholder="governorate">
+		    </div>   
+		   
 		    </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <strong>Country:</strong>
+                    <input type="text" name="country" class="form-control" placeholder="Country">
+                </div>    
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <strong>Street and city:</strong>
+                    <input type="text" name="street" class="form-control" placeholder="street">
+                </div>    
+            </div>
+            
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <label for="title">Select Brand:</label>
+                    <select class="form-control m-bot15" name="brand_id">
+                            @foreach($brands as $brand)
+                                <option value="{{ $brand->id }}" {{ $brand_id == $brand->id ? 'selected="selected"' : '' }}>{{ $brand->name }}</option>    
+                            @endforeach
+                    </select>
+                </div>    
+            </div>
+           
 		    <div class="col-xs-12 col-sm-12 col-md-12 text-center">
 		            <button type="submit" class="btn btn-primary">Submit</button>
 		    </div>

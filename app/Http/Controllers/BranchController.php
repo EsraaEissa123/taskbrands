@@ -4,6 +4,7 @@
 namespace App\Http\Controllers;
 use App\Models\branch;
 use App\Models\Product;
+use App\Models\Brand;
 use Illuminate\Http\Request;
 
 
@@ -42,7 +43,9 @@ class branchController extends Controller
      */
     public function create()
     {
-        return view('branches.create');
+        $brands=Brand::select('name','id')->get();
+        $brand_id=2;
+        return view('branches.create',compact('brands','brand_id'));
     }
 
 
@@ -55,12 +58,12 @@ class branchController extends Controller
     public function store(Request $request)
     {
         request()->validate([
-            'name' => 'required',
-            'detail' => 'required',
+            'branch' => 'required',
+            // 'detail' => 'required',
         ]);
 
 
-        branch::create($request->all());
+        Branch::create($request->all());
 
 
         return redirect()->route('branches.index')
