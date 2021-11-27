@@ -7,12 +7,15 @@ use Illuminate\Database\Eloquent\Model;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 
+
 class Product extends Model implements HasMedia
 {
-    protected $fillable = [
-        'name', 'detail', 'quantity','price','brand_id'
-    ];
     use HasFactory, InteractsWithMedia;
+
+    protected $fillable = [
+        'name', 'detail', 'quantity','price','brand_id', 'image_url'
+
+    ];
     public function brands()
     {
         return $this->belongsTo(Brand::class);

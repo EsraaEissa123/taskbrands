@@ -76,7 +76,6 @@ class BrandController extends Controller
      */
     public function show(Brand $brand)
     {
-        // $products = Product::find(10)->brand()->get();
            
 
         return view('brands.show',compact('brand'));
