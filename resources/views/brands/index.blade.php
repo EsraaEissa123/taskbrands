@@ -41,7 +41,9 @@
                     @can('brand-edit')
                     <a class="btn btn-primary" href="{{ route('brands.edit',$brand->id) }}">Edit</a>
                     @endcan
-
+                    @can('branch-management')
+                    <a class="btn btn-primary" href="{{ route('branches.management',$brand->id) }}">Management</a>
+                    @endcan
 
                     @csrf
                     @method('DELETE')

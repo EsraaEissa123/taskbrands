@@ -18,9 +18,10 @@ class branchController extends Controller
      */
     function __construct()
     {
-         $this->middleware('permission:branch-list|branch-create|branch-edit|branch-delete', ['only' => ['index','show']]);
+         $this->middleware('permission:branch-list|branch-create|branch-edit|branch-management|branch-delete', ['only' => ['index','show']]);
          $this->middleware('permission:branch-create', ['only' => ['create','store']]);
          $this->middleware('permission:branch-edit', ['only' => ['edit','update']]);
+         $this->middleware('permission:branch-management', ['only' => ['create','store']]);
          $this->middleware('permission:branch-delete', ['only' => ['destroy']]);
     }
     /**
@@ -45,6 +46,7 @@ class branchController extends Controller
     {
         $brands=Brand::select('name','id')->get();
         $brand_id=2;
+        
         return view('branches.create',compact('brands','brand_id'));
     }
 
@@ -58,7 +60,7 @@ class branchController extends Controller
     public function store(Request $request)
     {
         request()->validate([
-            'branch' => 'required',
+            'branch_name' => 'required',
             // 'detail' => 'required',
         ]);
 
@@ -80,10 +82,10 @@ class branchController extends Controller
     public function show(branch $branch)
     {
            
-       $branches= branch::with(['products'])->first();
-       $products=Product::where('branch_id',$branches->id)->get();
+       $branch= branch::with(['products'])->first();
+       $products=Product::where('brand_id',$branch->brand_id)->get();
    
-       return view('branches.show',compact('branches','products'));
+       return view('branches.show',compact('branch','products'));
 
     }
 

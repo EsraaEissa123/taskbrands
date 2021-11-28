@@ -20,4 +20,8 @@ class Product extends Model implements HasMedia
     {
         return $this->belongsTo(Brand::class);
     }
+    public function branches()
+    {
+        return $this->belongsToMany(Branch::class);
+    }
 }

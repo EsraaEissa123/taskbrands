@@ -67,6 +67,19 @@
                     </select>
                 </div>    
             </div>
+             {{-- <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <label for="title">Select Branches:</label>
+                    @foreach ($branches as $branch)      
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" name="branch_ids[]" value="{{ $branch->id }}" id="defaultCheck1">
+              <label class="form-check-label" for="defaultCheck1">
+                {{ $branch->branch_name }}
+              </label>
+            </div>
+  @endforeach
+                </div>    
+            </div> --}}
            
 		    <div class="col-xs-12 col-sm-12 col-md-12 text-center">
 		            <button type="submit" class="btn btn-primary">Submit</button>

@@ -34,32 +34,28 @@
          <div class="row">
 		    <div class="col-xs-12 col-sm-12 col-md-12">
 		        <div class="form-group">
-		            <strong>Name:</strong>
-		            <input type="text" name="name" value="{{ $branch->name }}" class="form-control" placeholder="Name">
+		            <strong>Branch Name:</strong>
+		            <input type="text" name="branch_name" value="{{ $branch->branch_name }}" class="form-control" placeholder="Branch Name">
 		        </div>
 		    </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
 		        <div class="form-group">
-		            <strong>Quantity:</strong>
-		            <input type="text" name="quantity" value="{{ $branch->quantity }}" class="form-control" placeholder="Quantity">
+		            <strong>Governorate:</strong>
+		            <input type="text" name="region" value="{{ $branch->region }}" class="form-control" placeholder="Quantity">
 		    </div>   
 		    <div class="col-xs-12 col-sm-12 col-md-12">
 		        <div class="form-group">
-		            <strong>Details:</strong>
-		            <textarea class="form-control" style="height:150px" name="detail" value="{{ $branch->detail }}" placeholder="Detail"></textarea>
+		            <strong>Country:</strong>
+		            <textarea class="form-control" style="height:150px" name="country" value="{{ $branch->country }}" placeholder="Country"></textarea>
 		        </div>
 		    </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <strong>Price:</strong>
-                    <input type="text" name="price" value="{{ $branch->price }}" class="form-control" placeholder="Price">
+                    <strong>Street and city::</strong>
+                    <input type="text" name="street" value="{{ $branch->street }}" class="form-control" placeholder="street">
                 </div>    
             </div>
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>Image:</strong>
-                    <input type="file" name="avatar" class="form-control" >
-                </div>  
+           
 		    <div class="col-xs-12 col-sm-12 col-md-12 text-center">
 		      <button type="submit" class="btn btn-primary">Submit</button>
 		    </div>

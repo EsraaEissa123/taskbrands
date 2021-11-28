@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
     
 use App\Models\Product;
 use App\Models\Brand;
+use App\Models\Branch;
+
 use Illuminate\Http\Request;
     
 class ProductController extends Controller
@@ -42,7 +44,13 @@ class ProductController extends Controller
     {
         $brands=Brand::select('name','id')->get();
         $brand_id=2;
+        $branches = Branch::select('id', 'branch_name')->get();
+        // return view(
+        //     'products.create',
+        //     compact('branches')
+        // );
         return view('products.create',compact('brands','brand_id'));
+
     }
     
     /**
@@ -66,6 +74,8 @@ class ProductController extends Controller
         if($request->hasFile('avatar') && $request->file('avatar')->isValid()){
             $product->addMediaFromRequest('avatar')->toMediaCollection('avatar');
         }
+        $product->branches()->sync($request->branch_ids);
+
         
        return redirect()->route('products.index')
                         ->with('success','Product created successfully.');

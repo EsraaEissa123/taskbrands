@@ -2,6 +2,8 @@
 
 
 namespace App\Http\Controllers;
+
+use App\Models\Branch;
 use App\Models\Brand;
 use App\Models\Product;
 use Illuminate\Http\Request;
@@ -17,9 +19,10 @@ class BrandController extends Controller
      */
     function __construct()
     {
-         $this->middleware('permission:brand-list|brand-create|brand-edit|brand-delete', ['only' => ['index','show']]);
+         $this->middleware('permission:brand-list|branch-management|brand-create|brand-edit|brand-delete', ['only' => ['index','show']]);
          $this->middleware('permission:brand-create', ['only' => ['create','store']]);
          $this->middleware('permission:brand-edit', ['only' => ['edit','update']]);
+         $this->middleware('permission:branch-management', ['only' => ['create','store']]);
          $this->middleware('permission:brand-delete', ['only' => ['destroy']]);
     }
     /**
@@ -77,10 +80,11 @@ class BrandController extends Controller
     public function show(Brand $brand)
     {
            
-       $brands= Brand::with(['products'])->first();
-       $products=Product::where('brand_id',$brands->id)->get();
-   
-       return view('brands.show',compact('brands','products'));
+       $brands= Brand::with(['branches'])->first();
+    //    $products=Product::where('brand_id',$brands->id)->get();
+       $branches=Branch::where('brand_id',$brands->id)->get();
+    // dd($branches);
+       return view('brands.show',compact('brands','branches'));
 
     }
 
