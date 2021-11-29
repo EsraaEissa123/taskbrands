@@ -48,6 +48,7 @@ class branchController extends Controller
         // $brand_id=2;
        $brand= Brand::with(['products'])->first();
        $products=Product::where('brand_id',$brand->brand_id)->get();
+    //    dd($products);
         
         return view('branches.create',compact('brand','products'));    }
     // public function management(branch $branch)
