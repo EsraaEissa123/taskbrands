@@ -37,5 +37,6 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('products', ProductController::class);
     Route::resource('brands', BrandController::class);
     Route::resource('branches', BranchController::class);
+    
 
 });
