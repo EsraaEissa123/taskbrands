@@ -74,7 +74,6 @@ class ProductController extends Controller
         if($request->hasFile('avatar') && $request->file('avatar')->isValid()){
             $product->addMediaFromRequest('avatar')->toMediaCollection('avatar');
         }
-        $product->branches()->sync($request->branch_ids);
 
         
        return redirect()->route('products.index')

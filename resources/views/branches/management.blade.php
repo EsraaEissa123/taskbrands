@@ -29,79 +29,21 @@
         </div>
          <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    {{-- <label for="title">Select Branches:</label>
+                    <label for="title">Select Branches:</label> 
                     @foreach ($products as $product)      
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" name="product_ids[]" value="{{ $product->id }}" id="defaultCheck1">
-              <label class="form-check-label" for="defaultCheck1">
-                {{ $product->name }}
-              </label>
-            </div>
-              @endforeach
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="product_ids[]" value="{{ $product->id }}" id="defaultCheck1">
+                        <label class="form-check-label" for="defaultCheck1">
+                          {{ $product->name }}
+                        </label>
+                      </div>
+                    @endforeach
                 </div>    
-            </div> --}}
-            <div class="row">
-                <div class="col-lg-12 margin-tb">
-                    <div class="pull-left">
-                        <h2>Products</h2>
-                    </div>
-                    <div class="pull-right">
-                        @can('product-create')
-                        <a class="btn btn-success" href="{{ route('products.create') }}"> Create New Product</a>
-                        @endcan
-                    </div>
-                </div>
-            </div>
+         </div> 
+          
         
         
-            @if ($message = Session::get('success'))
-                <div class="alert alert-success">
-                    <p>{{ $message }}</p>
-                </div>
-            @endif
         
         
-            <table class="table table-bordered">
-                <tr>
-                    {{-- <th>No</th> --}}
-                    <th>Name</th>
-                    <th>Quantity</th>
-                    <th>Details</th>
-                    <th>Price</th>
-                    {{-- <th>Brand</th> --}}
-                    <th width="30%">Image</th>
-                    <th width="280px">Action</th>
-                </tr>
-                @foreach ($products as $product)
-             
-                
-                <tr>
-                    <td>{{ $product->name }}</td>
-                <td>{{ $product->quantity }}</td>
-                    <td>{{ $product->detail }}</td>
-                    <td>{{ $product->price}}</td>
-                    <td>{{ $product->brand_id}}</td>
-                    <td><img src="{{$product->getFirstMediaUrl('avatar', 'thumb')}}" / width="120px"></td>
-                    
-                    <td>
-                        <form action="{{ route('products.destroy',$product->id) }}" method="POST"> 
-                            <a class="btn btn-info" href="{{ route('products.show',$product->id) }}">Show</a>
-                            @can('product-edit')
-                            <a class="btn btn-primary" href="{{ route('products.edit',$product->id) }}">Edit</a>
-                            @endcan
-        
-        
-                            @csrf
-                            @method('DELETE')
-                            @can('product-delete')
-                            <button type="submit" class="btn btn-danger">Delete</button>
-                            @endcan
-                        </form>
-                    </td> 
-                </tr>
-                @endforeach
-            </table>
-        
-        
-    </div>
-@endsection
+           
+               

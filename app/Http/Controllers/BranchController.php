@@ -42,13 +42,25 @@ class branchController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(brand $brand)
     {
-        $brands=Brand::select('name','id')->get();
-        $brand_id=2;
+        // $brands=Brand::select('name','id')->get();
+        // $brand_id=2;
+       $brand= Brand::with(['products'])->first();
+       $products=Product::where('brand_id',$brand->brand_id)->get();
         
-        return view('branches.create',compact('brands','brand_id'));
-    }
+        return view('branches.create',compact('brand','products'));    }
+    // public function management(branch $branch)
+    // {
+        // $brands=Brand::select('name','id')->get();
+        // $brand_id=2;
+        // $branch= branch::with(['brands'])->first();
+    //    $products=Product::where('brand_id',$branch->brand_id)->get();
+    //    $products->branches()->sync($request->branch_ids);
+
+        // dd($branch);
+        // return view('branches.management',compact('branch','brands','brand_id'));
+    // }
 
 
     /**
@@ -66,7 +78,6 @@ class branchController extends Controller
 
 
         Branch::create($request->all());
-
 
         return redirect()->route('branches.index')
                         ->with('success','branch created successfully.');

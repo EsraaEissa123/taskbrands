@@ -22,6 +22,6 @@ class Product extends Model implements HasMedia
     }
     public function branches()
     {
-        return $this->belongsToMany(Branch::class);
+        return $this->belongsToMany(Branch::class,'branch_product');
     }
 }

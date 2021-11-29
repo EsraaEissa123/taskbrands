@@ -31,7 +31,7 @@
             <div class="form-group">
                 <strong>Branches:</strong>
                 @foreach ($branches as $branch) 
-                    <li><a href="{{ route('branches.show') }}">{{ $branch->branch_name }}</a></li>
+                    <li><a href="">{{ $branch->branch_name }}</a></li>
                @endforeach
             </div>
         </div>
