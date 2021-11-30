@@ -26,6 +26,7 @@ class UpdateBrandFormRequest extends BaseFormRequest
     {
         return [
             'name' => 'required|string|max:100',
+            'detail' => 'required',
 
         ];
     }

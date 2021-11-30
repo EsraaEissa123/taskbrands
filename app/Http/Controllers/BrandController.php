@@ -7,6 +7,8 @@ use App\Models\Branch;
 use App\Models\Brand;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreBrandFormRequest;
+use App\Http\Requests\UpdateBrandFormRequest;
 
 
 
@@ -55,13 +57,9 @@ class BrandController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreBrandFormRequest $request)
     {
-        request()->validate([
-            'name' => 'required',
-            'detail' => 'required',
-        ]);
-
+       
 
         Brand::create($request->all());
 
@@ -111,12 +109,9 @@ class BrandController extends Controller
      * @param  \App\Brand  $brand
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Brand $brand)
+    public function update(UpdateBrandFormRequest $request, Brand $brand)
     {
-         request()->validate([
-            'name' => 'required',
-            'detail' => 'required',
-        ]);
+        
 
 
         $brand->update($request->all());

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use App\Models\Brand;
 use App\Models\Branch;
+use App\Http\Requests\StoreProductFormRequest;
+use App\Http\Requests\UpdateProductFormRequest;
 
 use Illuminate\Http\Request;
     
@@ -59,7 +61,7 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreProductFormRequest $request)
     {
         request()->validate([
             'name' => 'required',

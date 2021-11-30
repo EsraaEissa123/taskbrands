@@ -3,9 +3,9 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use phpDocumentor\Reflection\Types\Nullable;
+use Illuminate\Http\Request;
 
-class UpdateProductFormRequest extends BaseFormRequest
+class StoreBranchFormRequest extends BaseFormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,15 +22,15 @@ class UpdateProductFormRequest extends BaseFormRequest
      *
      * @return array
      */
-    public function rules()
+    public function rules(Request $request)
     {
+        // dd($request->all());
         return [
-            'name' => 'required|string|max:100',
-            'desc' => 'required|string',
-            'price' => 'required|string',
-            'brand_ids' => 'required',
-            'brand_ids.*' => 'exists:brands,id',
-    
+            
+            'branch_name' => 'required',
+            'region' => 'required',
+            'country' => 'required',
+            'street' => 'required',            
         ];
     }
 }

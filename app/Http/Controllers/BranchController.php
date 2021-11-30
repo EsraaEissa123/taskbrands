@@ -6,6 +6,8 @@ use App\Models\branch;
 use App\Models\Product;
 use App\Models\Brand;
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreBranchFormRequest;
+use App\Http\Requests\UpdateBranchFormRequest;
 
 
 
@@ -36,7 +38,6 @@ class branchController extends Controller
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
-
     /**
      * Show the form for creating a new resource.
      *
@@ -46,7 +47,8 @@ class branchController extends Controller
     public function create(Request $request){
         $brand= Brand::where('id',$request->id)->first();
         $products = Product::where('brand_id',$brand->id)->get();
-        $brand_id=$brand->id;
+        // $brand_id=$brand->id;
+
         return view('branches.create',compact('brand','products','brand_id'));    }
     
     /**
@@ -55,12 +57,9 @@ class branchController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreBranchFormRequest $request)
     {
-        request()->validate([
-            'branch_name' => 'required',
-            // 'detail' => 'required',
-        ]);
+        
         // return response()->json([
         //     $request->all()
         // ]);
@@ -77,7 +76,7 @@ class branchController extends Controller
 
         //  $branch_id=Branch::where('branch_name'==$request->branch_name)->get();
          
-
+        
         return redirect()->route('branches.show', $branch->id)
                         ->with('success','branch created successfully.');
     }
@@ -93,10 +92,10 @@ class branchController extends Controller
     {
            
         
-        $branches= branch::where('id',$branch->id)->get();
-        //    dd($branches);
+        $branches= branch::where('id',$branch->id)->first();
+        //    dd($branch->id);
        
-       $products=Product::where('brand_id',$branch->id)->get();
+       $products=Product::where('id',$branch->id)->get();
 //    return $products;
        
 
@@ -124,13 +123,9 @@ class branchController extends Controller
      * @param  \App\branch  $branch
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, branch $branch)
+    public function update(UpdateBranchFormRequest $request, branch $branch)
     {
-         request()->validate([
-            'name' => 'required',
-            'detail' => 'required',
-        ]);
-
+         
 
         $branch->update($request->all());
 
