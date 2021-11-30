@@ -42,28 +42,13 @@ class branchController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(brand $brand)
-    {
-        // $brands=Brand::select('name','id')->get();
-        // $brand_id=2;
-       $brand= Brand::with(['products'])->first();
-       $products=Product::where('brand_id',$brand->brand_id)->get();
-    //    dd($products);
-        
-        return view('branches.create',compact('brand','products'));    }
-    // public function management(branch $branch)
-    // {
-        // $brands=Brand::select('name','id')->get();
-        // $brand_id=2;
-        // $branch= branch::with(['brands'])->first();
-    //    $products=Product::where('brand_id',$branch->brand_id)->get();
-    //    $products->branches()->sync($request->branch_ids);
-
-        // dd($branch);
-        // return view('branches.management',compact('branch','brands','brand_id'));
-    // }
-
-
+   
+    public function create(Request $request){
+        $brand= Brand::where('id',$request->id)->first();
+        $products = Product::where('brand_id',$brand->id)->get();
+        $brand_id=$brand->id;
+        return view('branches.create',compact('brand','products','brand_id'));    }
+    
     /**
      * Store a newly created resource in storage.
      *
@@ -76,11 +61,24 @@ class branchController extends Controller
             'branch_name' => 'required',
             // 'detail' => 'required',
         ]);
+        // return response()->json([
+        //     $request->all()
+        // ]);
+        $branch = Branch::create([
+            'branch_name' => $request->branch_name,
+            'region' => $request->region,
+            'country' => $request->country,
+            'street' => $request->street,
+            'brand_id' => $request->brand_id,
 
+        ]);
 
-        Branch::create($request->all());
+        $branch->products()->sync($request->product_ids);
 
-        return redirect()->route('branches.index')
+        //  $branch_id=Branch::where('branch_name'==$request->branch_name)->get();
+         
+
+        return redirect()->route('branches.show', $branch->id)
                         ->with('success','branch created successfully.');
     }
 
@@ -94,8 +92,12 @@ class branchController extends Controller
     public function show(branch $branch)
     {
            
-       $branch= branch::with(['products'])->first();
+        
+        $branches= branch::where('id',$branch->id)->get();
+        //    dd($branches);
+       
        $products=Product::where('brand_id',$branch->brand_id)->get();
+        
    
        return view('branches.show',compact('branch','products'));
 

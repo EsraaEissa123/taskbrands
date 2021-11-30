@@ -48,12 +48,20 @@
                 <div class="form-group">
                     <strong>Country:</strong>
                     <input type="text" name="country" class="form-control" placeholder="Country">
+                    
                 </div>    
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Street and city:</strong>
                     <input type="text" name="street" class="form-control" placeholder="street">
+                </div>    
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+
+                               <input name="brand_id" type="hidden" value={{request('id')}} class="form-control">
+
                 </div>    
             </div>
             

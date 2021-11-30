@@ -84,6 +84,7 @@ class BrandController extends Controller
     //    $products=Product::where('brand_id',$brands->id)->get();
        $branches=Branch::where('brand_id',$brands->id)->get();
     // dd($branches);
+    
        return view('brands.show',compact('brands','branches'));
 
     }

@@ -7,9 +7,7 @@
             <div class="pull-left">
                 <h2> Show Branch</h2>
             </div>
-            <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('branches.index') }}"> Back</a>
-            </div>
+           
         </div>
     </div>
 
@@ -33,11 +31,7 @@
                     <div class="pull-left">
                         <h2>Products</h2>
                     </div>
-                    <div class="pull-right">
-                        @can('product-create')
-                        <a class="btn btn-success" href="{{ route('products.create') }}"> Create New Product</a>
-                        @endcan
-                    </div>
+                    
                 </div>
             </div>
         

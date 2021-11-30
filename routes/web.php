@@ -37,6 +37,6 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('products', ProductController::class);
     Route::resource('brands', BrandController::class);
     Route::resource('branches', BranchController::class);
-    Route::get('/branches/create/{brand_id}', [BranchController::class, 'create'])->name('branches.create');
+    Route::get('/branches/create/{id}', [BranchController::class, 'create'])->name('branches.create');
 
 });
