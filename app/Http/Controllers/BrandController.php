@@ -79,11 +79,13 @@ class BrandController extends Controller
      */
     public function show(Brand $brand)
     {
-           
-       $brands= Brand::with(['branches'])->first();
-    //    $products=Product::where('brand_id',$brands->id)->get();
-       $branches=Branch::where('brand_id',$brands->id)->get();
+       
+    //    $brands= Brand::with(['branches'])->first();
+    // //    $products=Product::where('brand_id',$brands->id)->get();
+    //    $branches=Branch::where('brand_id',$brands->id)->get();
     // dd($branches);
+    $brands= Brand::where('id',$brand->id)->first();
+        $branches = Branch::where('brand_id',$brand->id)->get();
     
        return view('brands.show',compact('brands','branches'));
 

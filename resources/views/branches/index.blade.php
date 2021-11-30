@@ -7,11 +7,11 @@
             <div class="pull-left">
                 <h2>branches</h2>
             </div>
-            <div class="pull-right">
+            {{-- <div class="pull-right">
                 @can('branch-create')
                 <a class="btn btn-success" href="{{ route('branches.create') }}"> Create New Branch</a>
                 @endcan
-            </div>
+            </div> --}}
         </div>
     </div>
 

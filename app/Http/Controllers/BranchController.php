@@ -97,8 +97,9 @@ class branchController extends Controller
         //    dd($branches);
        
        $products=Product::where('brand_id',$branch->id)->get();
-        
-   
+//    return $products;
+       
+
        return view('branches.show',compact('branch','products'));
 
     }
