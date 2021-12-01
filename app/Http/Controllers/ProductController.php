@@ -63,13 +63,7 @@ class ProductController extends Controller
      */
     public function store(StoreProductFormRequest $request)
     {
-        request()->validate([
-            'name' => 'required',
-            'detail' => 'required',
-            'quantity' => 'required',
-            'price' => 'required',
-
-        ]);
+       
     
         $input = $request->all();
         $product = Product::create($input);
@@ -111,12 +105,9 @@ class ProductController extends Controller
      * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $product)
+    public function update(UpdateProductFormRequest $request, Product $product)
     {
-         request()->validate([
-            'name' => 'required',
-            'detail' => 'required',
-        ]);
+        
     
         $product->update($request->all());
     

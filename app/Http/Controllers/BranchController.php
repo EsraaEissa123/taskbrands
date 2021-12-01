@@ -47,7 +47,7 @@ class branchController extends Controller
     public function create(Request $request){
         $brand= Brand::where('id',$request->id)->first();
         $products = Product::where('brand_id',$brand->id)->get();
-        // $brand_id=$brand->id;
+        $brand_id=$brand->id;
 
         return view('branches.create',compact('brand','products','brand_id'));    }
     
@@ -112,6 +112,7 @@ class branchController extends Controller
      */
     public function edit(branch $branch)
     {
+        
         return view('branches.edit',compact('branch'));
     }
 

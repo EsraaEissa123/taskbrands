@@ -28,10 +28,8 @@ class StoreProductFormRequest extends BaseFormRequest
         return [
             
             'name' => 'required|string|max:100',
-            'desc' => 'required|string',
+            'detail' => 'required|string',
             'price' => 'required|string',
-            'brand_ids' => 'required',
-            'brand_ids.*' => 'exists:brands,id',
             
         ];
     }
