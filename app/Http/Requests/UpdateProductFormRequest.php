@@ -25,9 +25,7 @@ class UpdateProductFormRequest extends BaseFormRequest
     public function rules()
     {
         return [
-            'name' => 'required|string|max:100',
-            'detail' => 'required|string',
-            'price' => 'required|string',
+            
             
     
         ];
