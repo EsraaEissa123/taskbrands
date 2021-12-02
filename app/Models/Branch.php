@@ -18,9 +18,7 @@ class Branch extends Model
     public function products()
     {
         return $this->belongsToMany(Product::class,'branch_product');
-        // $branch = Branch::find(1);
-
-        // return view('branches.show',compact('branch','products'));
+        
     }
     
 }
