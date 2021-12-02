@@ -88,18 +88,21 @@ class branchController extends Controller
      * @param  \App\branch  $branch
      * @return \Illuminate\Http\Response
      */
-    public function show(branch $branch)
+    public function show($id)
     {
            
-        
-        $branches= branch::where('id',$branch->id)->first();
-        //    dd($branch->id);
-       
-       $products=Product::where('id',$branch->id)->get();
-//    return $products;
+        // return response()->json([
+        //     $branch
+        // ]);
+        $branch = Branch::findOrFail($id);
+
+        return view(
+            'branches.show', 
+            compact('branch')
+        );
        
 
-       return view('branches.show',compact('branch','products'));
+    //    return view('branches.show',compact('branch','products'));
 
     }
 

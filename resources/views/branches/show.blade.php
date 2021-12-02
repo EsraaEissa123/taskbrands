@@ -55,7 +55,7 @@
                     <th width="30%">Image</th>
                     <th width="280px">Action</th>
                 </tr>
-                @foreach ($products as $product)
+                @foreach ($branch->products as $product)
              
                 
                 <tr>
