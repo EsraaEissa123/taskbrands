@@ -25,10 +25,7 @@ class UpdateBranchFormRequest extends BaseFormRequest
     public function rules()
     {
         return [
-            'branch_name' => 'required'|'unique',
-            'region' => 'required',
-            'country' => 'required',
-            'street' => 'required',
+           
 
         ];
     }

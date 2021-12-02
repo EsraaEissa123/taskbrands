@@ -44,7 +44,9 @@ class branchController extends Controller
      * @return \Illuminate\Http\Response
      */
    
-    public function create(Request $request){
+    public function create(Request $request)
+    {
+        
         $brand= Brand::where('id',$request->id)->first();
         $products = Product::where('brand_id',$brand->id)->get();
         $brand_id=$brand->id;
@@ -59,7 +61,7 @@ class branchController extends Controller
      */
     public function store(StoreBranchFormRequest $request)
     {
-        
+
         // return response()->json([
         //     $request->all()
         // ]);
@@ -115,8 +117,11 @@ class branchController extends Controller
      */
     public function edit(branch $branch)
     {
-        
-        return view('branches.edit',compact('branch'));
+                   
+        $brand= Brand::where('id',$branch->brand_id)->first();
+        $products = Product::where('brand_id',$brand->id)->get();
+        $brand_id=$brand->id;
+        return view('branches.edit',compact('brand','products','brand_id','branch'));
     }
 
 
@@ -129,10 +134,16 @@ class branchController extends Controller
      */
     public function update(UpdateBranchFormRequest $request, branch $branch)
     {
-         
 
-        $branch->update($request->all());
+        $branch->update([
+            'branch_name' => $request->branch_name,
+            'region' => $request->region,
+            'country' => $request->country,
+            'street' => $request->street,
 
+        ]);
+
+        $branch->products()->sync($request->product_ids);
 
         return redirect()->route('branches.index')
                         ->with('success','branch updated successfully');
