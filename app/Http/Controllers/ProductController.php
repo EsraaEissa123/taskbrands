@@ -63,13 +63,12 @@ class ProductController extends Controller
      */
     public function store(StoreProductFormRequest $request)
     {
-       
-    
+          
+    //    dd($request);
         $input = $request->all();
         $product = Product::create($input);
-        if($request->hasFile('avatar') && $request->file('avatar')->isValid()){
-            $product->addMediaFromRequest('avatar')->toMediaCollection('avatar');
-        }
+        $product = Product::find(1);
+        $product->addMediaFromRequest('image_url')->toMediaCollection('images');
 
         
        return redirect()->route('products.index')
