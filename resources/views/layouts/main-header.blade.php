@@ -29,7 +29,7 @@
                 <li class="nav-item fullscreen">
                     <a id="btnFullscreen" href="#" class="nav-link"><i class="ti-fullscreen"></i></a>
                 </li>
-                <li class="nav-item dropdown ">
+                {{-- <li class="nav-item dropdown ">
                     <a class="nav-link top-nav" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
                         aria-expanded="false">
                         <i class="ti-bell"></i>
@@ -52,8 +52,8 @@
                         <a href="#" class="dropdown-item">Order confirmation<small class="float-right text-muted time">2
                                 days</small> </a>
                     </div>
-                </li>
-                <li class="nav-item dropdown ">
+                </li> --}}
+                {{-- <li class="nav-item dropdown ">
                     <a class="nav-link top-nav" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
                         aria-expanded="true"> <i class=" ti-view-grid"></i> </a>
                     <div class="dropdown-menu dropdown-menu-right dropdown-big">
@@ -78,7 +78,7 @@
                             </a>
                         </div>
                     </div>
-                </li>
+                </li> --}}
                 <li class="nav-item dropdown mr-30">
                     <a class="nav-link nav-pill user-avatar" data-toggle="dropdown" href="#" role="button"
                         aria-haspopup="true" aria-expanded="false">
@@ -87,21 +87,30 @@
                     <div class="dropdown-menu dropdown-menu-right">
                         <div class="dropdown-header">
                             <div class="media">
+
+                                @auth 
                                 <div class="media-body">
-                                    <h5 class="mt-0 mb-0">Michael Bean</h5>
-                                    <span>michael-bean@mail.com</span>
+                                    <h5 class="mt-0 mb-0">{{Auth::user()->name}}</h5>
+                                    <span>{{Auth::user()->email}}</span>
                                 </div>
+                                @endauth
                             </div>
                         </div>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#"><i class="text-secondary ti-reload"></i>Activity</a>
-                        <a class="dropdown-item" href="#"><i class="text-success ti-email"></i>Messages</a>
-                        <a class="dropdown-item" href="#"><i class="text-warning ti-user"></i>Profile</a>
-                        <a class="dropdown-item" href="#"><i class="text-dark ti-layers-alt"></i>Projects <span
-                                class="badge badge-info">6</span> </a>
+                        {{-- <a class="dropdown-item" href="#"><i class="text-secondary ti-reload"></i>Activity</a> --}}
+                        {{-- <a class="dropdown-item" href="#"><i class="text-success ti-email"></i>Messages</a> --}}
+                        {{-- <a class="dropdown-item" href="#"><i class="text-warning ti-user"></i>Profile</a> --}}
+                        {{-- <a class="dropdown-item" href="#"><i class="text-dark ti-layers-alt"></i>Projects <span --}}
+                                {{-- class="badge badge-info">6</span> </a> --}}
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#"><i class="text-info ti-settings"></i>Settings</a>
-                        <a class="dropdown-item" href="#"><i class="text-danger ti-unlock"></i>Logout</a>
+                        {{-- <a class="dropdown-item" href="#"><i class="text-info ti-settings"></i>Settings</a> --}}
+                        @auth
+                        <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();"><i class="bx bx-log-out">Logout</a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                             @csrf
+                           </form>
+                        @endauth
+                       
                     </div>
                 </li>
             </ul>

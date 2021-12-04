@@ -37,6 +37,15 @@ class BrandController extends Controller
         $brands = Brand::latest()->paginate(5);
         return view('brands.index',compact('brands'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
+            
+    }
+    public function list()
+    {
+        $brands = Brand::latest()->paginate(5);
+    
+            return view('brands.list',compact('brands'))
+            ->with('i', (request()->input('page', 1) - 1) * 5);   
+
     }
 
 
@@ -88,7 +97,21 @@ class BrandController extends Controller
        return view('brands.show',compact('brands','branches'));
 
     }
+    public function showbrand($id)
+    {
+       
+    //    $brands= Brand::with(['branches'])->first();
+    // //    $products=Product::where('brand_id',$brands->id)->get();
+    //    $branches=Branch::where('brand_id',$brands->id)->get();
+   
+    $brands= Brand::where('id',$id)->first();
+    
+        $branches = Branch::where('brand_id',$id)->get();
+        
+    
+       return view('brands.showbrand',compact('brands','branches'));
 
+    }
 
     /**
      * Show the form for editing the specified resource.

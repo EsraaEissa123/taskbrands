@@ -5,25 +5,25 @@
             <div class="scrollbar side-menu-bg">
                 <ul class="nav navbar-nav side-menu" id="sidebarnav">
                     <!-- menu item Dashboard-->
-                    <li>
+                    {{-- <li>
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#dashboard">
                             <div class="pull-left"><i class="ti-home"></i><span class="right-nav-text">Dashboard</span>
                             </div>
                             <div class="pull-right"><i class="ti-plus"></i></div>
                             <div class="clearfix"></div>
-                        </a>
-                        <ul id="dashboard" class="collapse" data-parent="#sidebarnav">
-                            <li> <a href="index.html">Dashboard 01</a> </li>
-                            <li> <a href="index-02.html">Dashboard 02</a> </li>
-                            <li> <a href="index-03.html">Dashboard 03</a> </li>
-                            <li> <a href="index-04.html">Dashboard 04</a> </li>
-                            <li> <a href="index-05.html">Dashboard 05</a> </li>
-                        </ul>
-                    </li>
+                        </a> --}}
+                        {{-- <ul id="dashboard" class="collapse" data-parent="#sidebarnav"> --}}
+                            <li> <a href="{{ route('brands.index')}}">  Brands </a> </li>
+                            <li> <a href="{{ route('products.index')}}">Products</a></li>
+                            <li> <a href="{{ route('branches.index')}}">Branches</a></li>
+                            <li> <a href="{{ route('roles.index')}}">Roles</a></li>
+                            <li> <a href="{{ route('users.index')}}">Users</a></li>
+                        {{-- </ul>                  --}}
+                     {{-- </li> --}}
                     <!-- menu title -->
-                    <li class="mt-10 mb-10 text-muted pl-4 font-medium menu-title">Components </li>
+                    {{-- <li class="mt-10 mb-10 text-muted pl-4 font-medium menu-title">Components </li> --}}
                     <!-- menu item Elements-->
-                    <li>
+                    {{-- <li>
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#elements">
                             <div class="pull-left"><i class="ti-palette"></i><span
                                     class="right-nav-text">Elements</span></div>
@@ -93,10 +93,10 @@
                             <li> <a href="chart-morris.html">Chart morris </a> </li>
                             <li> <a href="chart-sparkline.html">Chart Sparkline</a> </li>
                         </ul>
-                    </li>
+                    </li> --}}
 
                     <!-- menu font icon-->
-                    <li>
+                    {{-- <li>
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#font-icon">
                             <div class="pull-left"><i class="ti-home"></i><span class="right-nav-text">font
                                     icon</span></div>
@@ -179,14 +179,14 @@
                                     class="right-nav-text">Authentication</span></div>
                             <div class="pull-right"><i class="ti-plus"></i></div>
                             <div class="clearfix"></div>
-                        </a>
+                        </a> --}}
                         <ul id="authentication" class="collapse" data-parent="#sidebarnav">
                             <li> <a href="login.html">login</a> </li>
                             <li> <a href="register.html">register</a> </li>
                             <li> <a href="lockscreen.html">Lock screen</a> </li>
                         </ul>
                     </li>
-                    <!-- menu item maps-->
+                    {{-- <!-- menu item maps-->
                     <li>
                         <a href="maps.html"><i class="ti-location-pin"></i><span class="right-nav-text">maps</span>
                             <span class="badge badge-pill badge-success float-right mt-1">06</span></a>
@@ -196,8 +196,8 @@
                         <a href="timeline.html"><i class="ti-panel"></i><span class="right-nav-text">timeline</span>
                         </a>
                     </li>
-                    <!-- menu item Multi level-->
-                    <li>
+                    <!-- menu item Multi level--> --}}
+                    {{-- <li>
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#multi-level">
                             <div class="pull-left"><i class="ti-layers"></i><span class="right-nav-text">Multi
                                     level Menu</span></div>
@@ -242,7 +242,7 @@
                                     <li> <a href="#">level item 2.1</a> </li>
                                     <li> <a href="#">level item 2.2</a> </li>
                                 </ul>
-                            </li>
+                            </li> --}}
                         </ul>
                     </li>
                 </ul>

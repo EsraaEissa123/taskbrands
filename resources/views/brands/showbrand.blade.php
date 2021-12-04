@@ -1,8 +1,5 @@
-@extends('layouts.master')
-@section('css')
-    @toastr_css
+@extends('layouts.app')
 
-@section('page-header')
 
 
 @section('content')
@@ -12,7 +9,7 @@
                 <h2> Show Brand</h2>
             </div>
             <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('brands.index') }}"> Back</a>
+                <a class="btn btn-primary" href="{{ route('brands.list') }}"> Back</a>
             </div>
         </div>
     </div>
@@ -22,6 +19,7 @@
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Name:</strong>
+                
                 {{ $brands->name }}
             </div>
         </div>
@@ -42,8 +40,4 @@
     </div>
     @endsection
 
-    @endsection
-    @section('js')
-    @toastr_js
-    @toastr_render
-    @endsection
+   

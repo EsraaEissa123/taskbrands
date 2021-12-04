@@ -23,9 +23,12 @@ use App\Http\Controllers\BranchController;
 |
 */
   
-Route::get('/', function () {
-    return view('auth.login');
-});
+// Route::get('/', function () {
+//     return view('Brands.list');
+// });
+Route::get('/', [BrandController::class, 'list'])->name('brands.list');
+Route::get('/brands/{id}', [BrandController::class, 'showbrand'])->name('brand.show');
+
   
 Auth::routes();
   

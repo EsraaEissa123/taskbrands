@@ -1,4 +1,8 @@
-@extends('layouts.app')
+@extends('layouts.master')
+@section('css')
+    @toastr_css
+
+@section('page-header')
 
 
 @section('content')
@@ -57,4 +61,8 @@
 
 
 <p class="text-center text-primary"><small>Tutorial by ItSolutionStuff.com</small></p>
+@endsection @endsection
+@section('js')
+@toastr_js
+@toastr_render
 @endsection

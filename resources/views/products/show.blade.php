@@ -1,4 +1,8 @@
-@extends('layouts.app')
+@extends('layouts.master')
+@section('css')
+    @toastr_css
+
+@section('page-header')
 
 
 @section('content')

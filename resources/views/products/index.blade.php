@@ -1,4 +1,10 @@
-@extends('layouts.app')
+@extends('layouts.master')
+@section('css')
+    @toastr_css
+
+@section('page-header')
+
+
 
 
 @section('content')
@@ -66,4 +72,9 @@
     {!! $products->links() !!}
 
     
-
+    @endsection
+    @section('js')
+    @toastr_js
+    @toastr_render
+    @endsection
+    
