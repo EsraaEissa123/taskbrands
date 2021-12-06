@@ -68,7 +68,7 @@ class ProductController extends Controller
         $input = $request->all();
         $product = Product::create($input);
         $product = Product::find(1);
-        $product->addMediaFromRequest('image_url')->toMediaCollection('images');
+        // $product->addMediaFromRequest('image_url')->toMediaCollection('images');
 
         
        return redirect()->route('products.index')

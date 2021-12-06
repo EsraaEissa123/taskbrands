@@ -48,7 +48,7 @@
             <td>{{ $product->detail }}</td>
 	        <td>{{ $product->price}}</td>
             <td>{{ $product->brand_id}}</td>
-            {{-- <td><img src="{{$products=$product->getFirstMedia()}}" / width="120px"></td> --}}
+            {{-- <td><img src="{{$product=$product->getFirstMedia()}}" / width="120px"></td> --}}
             
 	        <td>
                 <form action="{{ route('products.destroy',$product->id) }}" method="POST">
