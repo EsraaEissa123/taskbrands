@@ -47,7 +47,7 @@
                     @endcan
                     @can('branch-management')
                     
-                    <a class="btn btn-primary" href="{{ route('branches.create',$brand->id) }}">Branches</a>
+                    <a class="btn btn-primary" href="{{ route('branches.create',$brand->id) }}">Add Branch</a>
                     @endcan
 
                     @csrf
