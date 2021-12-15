@@ -7,10 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Branch extends Model
 {
+    use HasFactory;
     protected $fillable = [
         'branch_name','region','country','street', 'brand_id'
     ];
-    use HasFactory;
+    
     public function brand()
     {
         return $this->belongsTo(Brand::class);
