@@ -20,10 +20,10 @@ class branchController extends Controller
      */
     function __construct()
     {
-         $this->middleware('permission:branch-list|branch-create|branch-edit|branch-management|branch-delete', ['only' => ['index','show']]);
+         $this->middleware('permission:branch-list|branch-create|branch-edit|branch-delete', ['only' => ['index','show']]);
          $this->middleware('permission:branch-create', ['only' => ['create','store']]);
          $this->middleware('permission:branch-edit', ['only' => ['edit','update']]);
-         $this->middleware('permission:branch-management', ['only' => ['create','store']]);
+        //  $this->middleware('permission:branch-management', ['only' => ['create','store']]);
          $this->middleware('permission:branch-delete', ['only' => ['destroy']]);
     }
     /**
@@ -105,6 +105,19 @@ class branchController extends Controller
        
 
     //    return view('branches.show',compact('branch','products'));
+
+    }
+    public function showbranch($id)
+    {
+           
+        
+        $branch = Branch::findOrFail($id);
+
+        return view(
+            'branches.showbranch', 
+            compact('branch')
+        );
+       
 
     }
 

@@ -28,6 +28,7 @@ use App\Http\Controllers\BranchController;
 // });
 Route::get('/', [BrandController::class, 'list'])->name('brands.list');
 Route::get('/brands/{id}', [BrandController::class, 'showbrand'])->name('brand.show');
+Route::get('/branches/{id}', [BranchController::class, 'showbranch'])->name('branches.show');
 
   
 Auth::routes();
