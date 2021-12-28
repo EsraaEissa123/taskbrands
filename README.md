@@ -29,3 +29,5 @@ E-commerce Sample Using laravel
 - List brands
 - Open brand to show its branches
 - Open branch to show its products and location on the map
+
+
