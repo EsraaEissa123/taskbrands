@@ -76,7 +76,6 @@ class branchController extends Controller
 
         $branch->products()->sync($request->product_ids);
 
-        //  $branch_id=Branch::where('branch_name'==$request->branch_name)->get();
          
         
         return redirect()->route('branches.show', $branch->id)
@@ -93,9 +92,7 @@ class branchController extends Controller
     public function show($id)
     {
            
-        // return response()->json([
-        //     $branch
-        // ]);
+      
         $branch = Branch::findOrFail($id);
 
         return view(
@@ -104,13 +101,12 @@ class branchController extends Controller
         );
        
 
-    //    return view('branches.show',compact('branch','products'));
-
+   
     }
     public function showbranch($id)
     {
            
-        //comment
+        
         $branch = Branch::findOrFail($id);
 
         return view(
